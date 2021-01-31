@@ -48,17 +48,24 @@ package site.ccczg.array;
  */
 public class RemoveDuplicatesFromSortedArray_26 {
     public static int removeDuplicates(int[] nums) {
-        if(nums == null || nums.length == 1) {
-            return nums.length;
+        if(nums == null || nums.length == 0) {
+           return 0;
         }
-        for (int num : nums) {
-            
+        int p = 0;
+        int q = 1;
+        while (q < nums.length) {
+            if (nums[p] != nums[q]) {
+                nums[p+1] = nums[q];
+                p++;
+            }
+            q++;
         }
-        return nums[2];
+        return p + 1;
     }
 
     public static void main(String[] args) {
         int [] nums = {1,1,2};
-        removeDuplicates(nums);
+        int i = removeDuplicates(nums);
+        System.out.println(i);
     }
 }
